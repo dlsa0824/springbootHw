@@ -1,0 +1,25 @@
+TB_ESB21815_ITEM_PRICE_NUMBER
+
+INSERT INTO TB_ESB21815_ITEM_PRICE_NUMBER(ITEM, PRICE, AMOUNT) VALUES('milk', 30, 10);
+INSERT INTO TB_ESB21815_ITEM_PRICE_NUMBER(ITEM, PRICE, AMOUNT) VALUES('coffee', 40, 10);
+INSERT INTO TB_ESB21815_ITEM_PRICE_NUMBER(ITEM, PRICE, AMOUNT) VALUES('cola', 25, 10);
+INSERT INTO TB_ESB21815_ITEM_PRICE_NUMBER(ITEM, PRICE, AMOUNT) VALUES('juice', 35, 10);
+INSERT INTO TB_ESB21815_ITEM_PRICE_NUMBER(ITEM, PRICE, AMOUNT) VALUES('water', 10, 10);
+
+DELETE FROME TB_ESB21815_ITEM_PRICE_NUMBER WHERE ITEM = 'cola'
+
+
+PK_ESB21815_ITEM_PRICE_NUMBER
+
+
+Caused by: java.sql.SQLIntegrityConstraintViolationException: ORA-00001: 違反必須為唯一的限制條件 (B320_EDU.PK_ESB21815_ITEM_PRICE_NUMBER)
+
+
+
+如果是可預知的錯誤，用throw new exception還是直接return errorMessage好?
+try catch 要放在controller 還是 service 好? => 我看文章是寫放在controller
+query 資料庫如果是 0，判斷要放在controller還是service?
+什麼時候用new 什麼時候用Autowired?
+如果有共用功能，要在service 再開一個function還是直接呼叫dao的func即可以?
+如果做update，扣掉PK欄位有兩個，但你只要改一個的情況下，SQL的?會寫全部還是調整就好
+service interface是不是寫的不彈性
