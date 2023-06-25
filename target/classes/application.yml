@@ -1,0 +1,33 @@
+server:
+  port: 8070
+#  ssl:
+#    key-store: classpath:springboot.jks
+#    key-store-password: springboot
+#    key-store-type: jks
+  servlet:
+    context-path: /esb
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+spring:
+  datasource:
+    url: jdbc:h2:./data/db
+    username: daniel
+    password: daniel
+    driverClassName: org.h2.Driver
+    hikari:
+ #     auto-commit: false
+      connection-timeout: 60000
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console.enabled: true
+#spring:
+#  datasource:
+#    name: dataSource
+#    url : jdbc:oracle:thin:@//10.230.214.67:2031/SR_B320EDU_01
+#    driverClassName : oracle.jdbc.driver.OracleDriver
+#    username : B320_EDU
+#    password : B320_EDU
