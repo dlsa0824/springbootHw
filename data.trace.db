@@ -1,3 +1,0 @@
-2023-06-25 13:32:39 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "TB_ESB21815_ITEM_PRICE_NUMBER" not found; SQL statement:
-SELECT * FROM TB_ESB21815_ITEM_PRICE_NUMBER [42102-200]
