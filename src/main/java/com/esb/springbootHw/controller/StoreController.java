@@ -37,7 +37,7 @@ public class StoreController {
 
 	@PostMapping("/getPrice")
 	public ItemInfoResponseDto getPrice(@Validated(ValidationGroup.query.class) @RequestBody ItemInfoRequestDto itemInfoRequestDto) throws ItemNotAvailableException {
-//		throw new ItemNotAvailableException("11", "11");
+//		throw new ItemNotAvailableException("1", "1");
 		List<ItemInfo> items = itemInfoRequestDto.getItems();
 		ItemInfoResponseDto itemInfoResponseDto = new ItemInfoResponseDto();
 		itemInfoResponseDto.setItems(storeServiceImp.getItemsInfo(items));
