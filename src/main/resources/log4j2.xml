@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Properties>
+        <Property name="application.name">springbootHw</Property>
+        <!-- <Property name="log.root.path">C:/Users/esb21815/Desktop</Property>-->
+        <Property name="log.root.path">C:/Users/Daniel/Desktop</Property>
+        <Property name="log.level">INFO</Property>
+        <Property name="log.size">50 MB</Property>
+        <Property name="log.file.number">2000</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout
+                     pattern="%d{yyyy/MM/dd@HH:mm:ss.SSS} [%t] %-5level %logger{36} ${application.name}  - %msg%n"
+                     charset="UTF-8" />
+        </Console>
+        <RollingFile name="Ap"
+                     fileName="${log.root.path}/ap.log" 
+                     filePattern="${log.root.path}/ap-%d{yyyy/MM/dd}-%i.log">
+            <PatternLayout
+                     pattern='{"timestamp":"%d{yyyy/MM/dd@HH:mm:ss.SSS}", "application":"${application.name}", "level":"%-5level", "log-type":"ap-log", "thread":"[%t]", "uuid": "%X{uuid}", "msgNo": "%X{msgNo}", "message":"%msg"}%n'
+                     charset="UTF-8" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="${log.size}"/>
+            </Policies>
+            <DefaultRolloverStrategy max="${log.file.number}"/>
+        </RollingFile>
+        <RollingFile name="Inbound"
+                     fileName="${log.root.path}/inbound.log"
+                     filePattern="${log.root.path}/inbound-%d{yyyy/MM/dd}-%i.log">
+            <PatternLayout
+                     pattern='{"timestamp":"%d{yyyy/MM/dd@HH:mm:ss.SSS}", "application":"${application.name}", "level":"%-5level", "log-type":"inbound-log", "thread":"[%t]", "uuid": "%X{uuid}", "msgNo": "%X{msgNo}", "inbound-info":%msg}%n'
+                     charset="UTF-8" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="${log.size}"/>
+            </Policies>
+            <DefaultRolloverStrategy max="${log.file.number}"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="Ap" />
+        </Root>
+        <Logger name="ApLog" level="${log.level}" additivity="false">
+            <AppenderRef ref="Ap" />
+        </Logger>
+        <Logger name="InboundLog" level="${log.level}" additivity="false">
+            <AppenderRef ref="Inbound" />
+        </Logger>
+    </Loggers>
+</Configuration>
